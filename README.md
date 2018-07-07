@@ -10,8 +10,6 @@ Requires `Android 5.0+` and above
 ## Integration ##
 1. Download latest version of SDK (`social-sdk-[version].aar` file) and put it in folder `libs`
 2. Add dependency to `social-sdk` in your project (`build.gradle` file):
-<br/>
-<br/>
 
 ```
 
@@ -25,9 +23,7 @@ repositories {
     api(name:'social-sdk-[version]', ext:'aar')
   }
   
-``` 
-<br/>
-
+```
 
 3. Launch `SocialDemoActivity.class` with preferable social type from your activity.
 <br/>
