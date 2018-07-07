@@ -34,7 +34,8 @@ repositories {
      
 ```
 
-## Integration with fine-grain control ##
+## Integration with fine-grained control ##
+SDK allows you to put your favorite network in one view with your app.
 1. Get instance of `Social.class` providing preferable social type and container for view <br/>
 ```
         FrameLayout container = (FrameLayout) findViewById(R.id.root_container);
