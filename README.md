@@ -10,7 +10,6 @@ Requires `Android 5.0+` and above
 ## Integration ##
 1. Download latest version of SDK (`social-sdk-[version].aar` file) and put it in folder `libs`
 2. Add dependency to `social-sdk` in your project (`build.gradle` file):
-
 ```
 
 repositories {
@@ -24,7 +23,6 @@ repositories {
   }
   
 ```
-
 3. Launch `SocialDemoActivity.class` with preferable social type from your activity.
 <br/>
 
@@ -35,22 +33,15 @@ repositories {
      startActivity(intent);
      
 ```
-<br/>
 
 ## Integration with fine-grain control ##
 1. Get instance of `Social.class` providing preferable social type and container for view <br/>
-<br/>
-
 ```
         FrameLayout container = (FrameLayout) findViewById(R.id.root_container);
         Social  mReddit = SocialSdk.getInstance(YourActivity.this, container, Social.Type.REDDIT);
         
-        ```
-<br/>
-
+```
 2. Bind lifecycle of `Social.class` instance to your activity
-<br/>
-
 ```
 
         @Override
@@ -65,19 +56,13 @@ repositories {
             mReddit.onPause();
         }
         
-        ```
-        <br/>
-
-3. Provide search query <br/>
-<br/>
-
+```
+3. Provide search query
 ```
 
            mReddit.searchFor(query);
 
 ```
-<br/>
-
-      That's all.
+   That's all.
 ## Sample ##
 Get test application [here](https://github.com/jacobwyn/ECommerceDemo/tree/master/app)
