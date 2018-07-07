@@ -1,23 +1,24 @@
-package com.jacob.getsocial.reddit.view;
+package com.jacob.getsocial.reddit;
 
 import android.app.Activity;
 import android.content.Intent;
 
 import com.jacob.getsocial.reddit.GetSocialRedditContract;
 import com.jacob.getsocial.reddit.data.PageDataSource;
-import com.jacob.getsocial.reddit.data.PageRepository;
+import com.jacob.getsocial.reddit.data.RedditRepository;
 import com.jacob.getsocial.reddit.data.model.News;
 import com.jacob.getsocial.reddit.data.model.Page;
+import com.jacob.getsocial.reddit.view.DetailActivity;
 
 public class RedditPresenter implements GetSocialRedditContract.Presenter, PageDataSource.LoadPageCallback {
     private final GetSocialRedditContract.View mView;
     private final Activity mActivity;
-    private final PageRepository mRepository;
+    private final RedditRepository mRepository;
     private String mNextPage;
     private String mLastQuery;
     private LoadState mState = LoadState.NONE;
 
-    public RedditPresenter(GetSocialRedditContract.View view, Activity activity, PageRepository repository) {
+    public RedditPresenter(GetSocialRedditContract.View view, Activity activity, RedditRepository repository) {
         mView = view;
         mActivity = activity;
         mRepository = repository;
@@ -62,6 +63,7 @@ public class RedditPresenter implements GetSocialRedditContract.Presenter, PageD
         mState = LoadState.UPDATE;
         mLastQuery = query;
         mView.showProgressBar(true);
+        mView.clearData();
         mRepository.loadPage(query, this);
     }
 

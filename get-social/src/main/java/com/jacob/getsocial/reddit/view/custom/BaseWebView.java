@@ -37,11 +37,13 @@ public class BaseWebView extends WebView {
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, WebResourceRequest request) {
-                return false;
+                view.loadUrl(request.getUrl().toString());
+                return true;
             }
 
             @Override
             public boolean shouldOverrideUrlLoading(WebView view, String url) {
+                view.loadUrl(url);
                 return true;
             }
         });

@@ -16,7 +16,7 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
             buildConfigField "String", "REDDIT_BASE_URL", REDDIT_BASE_URL
-            buildConfigField "String", "REDDIT_OAUTH_BASE_URL", REDDIT_OAUTH_BASE_URL
+            buildConfigField "String", "REDDIT_APP_ID", REDDIT_APP_ID
         }
         debug.initWith(buildTypes.release)
         debug {

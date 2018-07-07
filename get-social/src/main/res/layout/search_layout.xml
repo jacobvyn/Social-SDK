@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:id="@+id/search_edittext"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/search_edittext_height"
+            android:background="@drawable/search_edit_text_design"
+            android:gravity="center"
+            android:hint="@string/search"
+            android:imeOptions="actionGo"
+            android:inputType="text"
+            android:textSize="@dimen/text_16sp" />
+
+        <Button
+            android:id="@+id/delete_search_button"
+            android:layout_width="@dimen/delete_search_button_width"
+            android:layout_height="@dimen/delete_search_button_height"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="@dimen/delete_search_button_margin_right"
+            android:background="@drawable/search_delete_button" />
+
+        <Button
+            android:id="@+id/search_logo"
+            android:layout_width="@dimen/search_logo_width"
+            android:layout_height="@dimen/search_logo_height"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/search_logo_margin_left"
+            android:background="@drawable/search_lens_icon" />
+
+    </RelativeLayout>
+</LinearLayout>

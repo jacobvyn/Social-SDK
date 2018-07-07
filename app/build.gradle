@@ -39,11 +39,13 @@ repositories {
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
 
+    //app dependencies
     implementation 'com.android.support:appcompat-v7:27.1.1'
     implementation 'com.android.support:recyclerview-v7:27.1.1'
-
     api 'com.fasterxml.jackson.core:jackson-core:2.9.5'
     api 'com.fasterxml.jackson.core:jackson-annotations:2.9.5'
     api 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+
+    // sdk dependencies
     api project(path: ':get-social')
 }

@@ -4,20 +4,20 @@ import android.support.annotation.NonNull;
 
 import com.jacob.getsocial.reddit.data.model.Page;
 
-public class PageRepository implements PageDataSource {
+public class RedditRepository implements PageDataSource {
 
     private final PageDataSource mLocalDataSource;
     private final PageDataSource mRemoteDataSource;
-    private static PageRepository sInstance;
+    private static RedditRepository sInstance;
 
-    private PageRepository(PageDataSource localDataSource, PageDataSource remoteDataSource) {
+    private RedditRepository(PageDataSource localDataSource, PageDataSource remoteDataSource) {
         this.mLocalDataSource = localDataSource;
         this.mRemoteDataSource = remoteDataSource;
     }
 
-    public static PageRepository getInstance(PageDataSource localDataSource, PageDataSource remoteDataSource) {
+    public static RedditRepository getInstance(PageDataSource localDataSource, PageDataSource remoteDataSource) {
         if (sInstance == null) {
-            sInstance = new PageRepository(localDataSource, remoteDataSource);
+            sInstance = new RedditRepository(localDataSource, remoteDataSource);
         }
         return sInstance;
     }
@@ -77,6 +77,7 @@ public class PageRepository implements PageDataSource {
             @Override
             public void onPageLoaded(Page page) {
                 callback.onPageLoaded(page);
+                mLocalDataSource.savePage(page, null);
             }
 
             @Override

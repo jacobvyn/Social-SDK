@@ -6,10 +6,10 @@ public class RedditResponse {
     private Page mPage;
     private String mMessage;
     private boolean mIsSuccessful;
-    private String mQuery;
+    private String mId;
 
-    public RedditResponse(String query) {
-        mQuery = query;
+    public RedditResponse(String query, String nextPageToken) {
+        mId = query + nextPageToken;
     }
 
     public void setSuccessful(boolean isSuccessful) {
@@ -18,7 +18,7 @@ public class RedditResponse {
 
     public void setPage(Page page) {
         this.mPage = page;
-        mPage.setQuery(mQuery);
+        mPage.setId(mId);
     }
 
     public void setMessage(String message) {

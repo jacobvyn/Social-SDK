@@ -1,10 +1,11 @@
 package com.jacob.getsocial.reddit.data.model;
 
 import java.util.List;
+import java.util.Objects;
 
 public class Page {
     private String mNextPageToken = "";
-    private String mQuery = "";
+    private String mId = "";
 
     public String getNextPageToken() {
         return mNextPageToken;
@@ -24,15 +25,27 @@ public class Page {
 
     private List<News> mNewsList;
 
-    public String getQuery() {
-        return mQuery;
-    }
-
-    public void setQuery(String query) {
-        mQuery = query;
-    }
-
     public String getId() {
-        return mQuery + mNextPageToken;
+        return mId;
+    }
+
+    public void setId(String id) {
+        mId = id;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Page page = (Page) o;
+        return Objects.equals(mNextPageToken, page.mNextPageToken) &&
+                Objects.equals(mId, page.mId) &&
+                Objects.equals(mNewsList, page.mNewsList);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(mNextPageToken, mId, mNewsList);
     }
 }

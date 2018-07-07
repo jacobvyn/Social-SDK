@@ -16,6 +16,8 @@ public interface GetSocialRedditContract {
         void onUpdate(List<News> newsList);
 
         void showMessage(String message);
+
+        void clearData();
     }
 
     interface Presenter {

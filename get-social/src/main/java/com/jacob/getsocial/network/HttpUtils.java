@@ -14,6 +14,7 @@ import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.ProtocolException;
 import java.net.URL;
+import java.util.Map;
 
 public class HttpUtils {
     private static final String LOG_TAG = HttpUtils.class.getSimpleName();
@@ -28,12 +29,12 @@ public class HttpUtils {
     }
 
     @NonNull
-    public static HttpRawResponse doRequest(String url) {
+    public static HttpRawResponse doRequest(String url, Map<String, String> headers) {
         Logging.out(LOG_TAG, "Making request by: " + url);
         HttpRawResponse response = new HttpRawResponse();
         HttpURLConnection connection = null;
         try {
-            connection = createConnection(url);
+            connection = createConnection(url, headers);
             connection.setRequestMethod("GET");
 
             int responseCode = connection.getResponseCode();
@@ -69,19 +70,19 @@ public class HttpUtils {
         return response;
     }
 
-    private static HttpURLConnection createConnection(String urlStr) throws IOException {
+    private static HttpURLConnection createConnection(String urlStr, Map<String, String> headers) throws IOException {
         URL url = new URL(urlStr);
 
-        String client_id = Base64.encodeToString("So6a_PyqTklqMw".getBytes(), Base64.NO_WRAP);
         HttpURLConnection connection = (HttpURLConnection) url.openConnection();
         connection.setConnectTimeout(CONNECT_TIMEOUT);
         connection.setReadTimeout(READ_TIMEOUT);
         connection.setRequestProperty(HEADER_USER_AGENT, getUserAgent());
-//        connection.setRequestProperty("Authorization", "Basic -nUCj9w8Nb8N-89Q7Fr0SNvuwh8I");
-        connection.setRequestProperty("Authorization", "Basic " + client_id);
-        connection.setRequestProperty("grant_type", "installed_client");
-        connection.setRequestProperty("device_id", "4d7674f3-46bf-4352-9784-91e87c74d106");
-
+        if (headers != null) {
+            for (String key : headers.keySet()) {
+                String param = headers.get(key);
+                connection.setRequestProperty(key, param);
+            }
+        }
         return connection;
     }
 

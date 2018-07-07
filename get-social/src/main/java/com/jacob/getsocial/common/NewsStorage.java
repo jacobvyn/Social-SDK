@@ -25,4 +25,8 @@ public class NewsStorage {
     public int size() {
         return mData.size();
     }
+
+    public void clear() {
+        mData.clear();
+    }
 }

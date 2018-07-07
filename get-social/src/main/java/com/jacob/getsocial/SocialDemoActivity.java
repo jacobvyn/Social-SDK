@@ -30,6 +30,11 @@ public class SocialDemoActivity extends AppCompatActivity implements SearchView.
         FrameLayout container = (FrameLayout) findViewById(R.id.root_container);
         setSocialType();
         mReddit = SocialSdk.getInstance(this, container, mSocialType);
+        mReddit.hideSearchView();
+
+        String keyWord = "money";
+        mReddit.searchFor(keyWord);
+        getSupportActionBar().setTitle(keyWord);
     }
 
     @Override

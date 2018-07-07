@@ -70,7 +70,13 @@ public class NewsAdapter extends RecyclerView.Adapter<NewsAdapter.BaseViewHolder
         notifyItemRangeChanged(start, count);
     }
 
+    public void clearData() {
+        mData.clear();
+        notifyDataSetChanged();
+    }
+
     protected class BaseViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+
         private TextView likesCounter;
         private TextView titleTextView;
         private TextView authorTextView;

@@ -27,8 +27,8 @@ public class ResponseParser extends BaseJSONParser {
     private static final String PARAM_NEWS_NUM_COMMENTS = "num_comments";
     private static final String PARAM_NEWS_UPS = "ups";
 
-    public RedditResponse parse(HttpRawResponse httpResponse, String query) {
-        RedditResponse redditResponse = new RedditResponse(query);
+    public RedditResponse parse(HttpRawResponse httpResponse, String query, String nextPageToken) {
+        RedditResponse redditResponse = new RedditResponse(query, nextPageToken);
         if (httpResponse.getCode() == HttpURLConnection.HTTP_OK) {
             if (isBodyParcelable(httpResponse)) {
                 redditResponse.setSuccessful(true);

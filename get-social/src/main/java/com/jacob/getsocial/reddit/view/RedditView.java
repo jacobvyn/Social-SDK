@@ -8,16 +8,20 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.widget.FrameLayout;
+import android.widget.RelativeLayout;
 
 import com.jacob.getsocial.R;
 import com.jacob.getsocial.common.UiUtils;
 import com.jacob.getsocial.reddit.GetSocialRedditContract;
 import com.jacob.getsocial.reddit.data.model.News;
+import com.jacob.getsocial.reddit.view.custom.SearchView;
 
 import java.util.List;
 
-public class RedditView extends FrameLayout implements GetSocialRedditContract.View, SwipeRefreshLayout.OnRefreshListener, NewsAdapter.OnItemClickListener {
+public class RedditView extends RelativeLayout implements
+        GetSocialRedditContract.View,
+        SwipeRefreshLayout.OnRefreshListener,
+        NewsAdapter.OnItemClickListener, SearchView.OnSearchListener {
 
     private static final double THRESHOLD = 0.8;
     private GetSocialRedditContract.Presenter mPresenter;
@@ -25,6 +29,7 @@ public class RedditView extends FrameLayout implements GetSocialRedditContract.V
     private RecyclerView mRecyclerView;
     private NewsAdapter mAdapter;
     private LinearLayoutManager mLayoutManager;
+    private SearchView mSearchView;
 
     public RedditView(@NonNull Context context) {
         super(context);
@@ -34,6 +39,8 @@ public class RedditView extends FrameLayout implements GetSocialRedditContract.V
     }
 
     private void initView(final View view) {
+        mSearchView =(SearchView) view.findViewById(R.id.reddit_search_view);
+        mSearchView.setListener(this);
         mSwipeRefreshLayout = (SwipeRefreshLayout) view.findViewById(R.id.reddit_swipe_refresh_layout);
         mSwipeRefreshLayout.setOnRefreshListener(this);
         mSwipeRefreshLayout.setColorSchemeResources(R.color.black, R.color.black, R.color.black, R.color.black);
@@ -85,6 +92,11 @@ public class RedditView extends FrameLayout implements GetSocialRedditContract.V
     }
 
     @Override
+    public void clearData() {
+        mAdapter.clearData();
+    }
+
+    @Override
     public void setPresenter(GetSocialRedditContract.Presenter presenter) {
         mPresenter = presenter;
     }
@@ -110,5 +122,14 @@ public class RedditView extends FrameLayout implements GetSocialRedditContract.V
     @Override
     public void onItemClicked(News news) {
         mPresenter.onItemCLicked(news);
+    }
+
+    public void hideSearchView() {
+        mSearchView.setVisibility(GONE);
+    }
+
+    @Override
+    public void onSearch(String expression) {
+        mPresenter.loadPage(expression);
     }
 }

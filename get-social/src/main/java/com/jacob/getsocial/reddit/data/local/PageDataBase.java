@@ -34,9 +34,8 @@ public class PageDataBase {
 
         @Override
         public boolean savePage(@NonNull Page page) {
-            Page page1Exists = PAGE_DATA_BASE.put(page.getQuery(), page);
-            Page page2Exists = PAGE_DATA_BASE.put(page.getId(), page);
-            return page1Exists != null || page2Exists != null;
+            Page pageExisted = PAGE_DATA_BASE.put(page.getId(), page);
+            return pageExisted != null;
         }
 
         @Override
