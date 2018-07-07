@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:id="@+id/thank_you_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/thank_you"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16sp" />
+
+    <TextView
+        android:id="@+id/sending_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/thank_you_textview"
+        android:text="@string/we_are_sending_thee_purchase_to_you"
+        android:textColor="@color/black"
+        android:textSize="@dimen/text_16sp" />
+
+    <ImageView
+        android:id="@+id/product_icon"
+        android:layout_width="@dimen/product_icon_width"
+        android:layout_height="@dimen/product_icon_height"
+        android:layout_centerInParent="true"
+        android:src="@drawable/moto" />
+
+    <RelativeLayout
+        android:id="@+id/back_to_search_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="@dimen/back_to_search_layout_margin_top"
+        android:background="@drawable/background_buy_button">
+
+        <ImageView
+            android:id="@+id/search_button_icon"
+            android:layout_width="@dimen/search_button_icon_width"
+            android:layout_marginLeft="@dimen/search_button_icon_margin_Left"
+            android:layout_height="@dimen/search_button_icon_weight"
+            android:src="@drawable/big_search_button" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/back_to_search_textview_margin_left"
+            android:layout_toRightOf="@id/search_button_icon"
+            android:text="@string/back_to_search"
+            android:textSize="@dimen/text_20sp"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+
+</RelativeLayout>

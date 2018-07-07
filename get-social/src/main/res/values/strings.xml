@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">get-social</string>
+    <string name="action_settings">Search</string>
+    <string name="reddit">Reddit</string>
+    <string name="news_item_author_example_text">Schwarzenegger</string>
+    <string name="news_item_title_text_example">A seemingly indestructible android is sent from 2029</string>
+    <string name="news_item_likes_count_example">777</string>
+    <string name="news_item_messages_count_example">666</string>
+</resources>

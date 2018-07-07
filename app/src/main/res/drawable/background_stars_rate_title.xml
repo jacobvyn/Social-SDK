@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item>
+        <layer-list>
+
+            <item android:bottom="@dimen/item_background_button_padding_bottom">
+                <shape>
+                    <gradient android:angle="270" android:centerColor="@color/amazon" android:endColor="@color/amazon" android:startColor="@color/amazon" />
+                    <corners android:radius="@dimen/background_button_radius" />
+                    <padding android:bottom="@dimen/background_button_padding_bottom" android:left="@dimen/background_button_padding_left" android:right="@dimen/background_button_padding_right" android:top="@dimen/background_button_padding_top" />
+                </shape>
+            </item>
+        </layer-list>
+    </item>
+
+</selector>

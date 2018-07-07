@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:orientation="vertical">
+
+    <android.support.design.widget.AppBarLayout
+        android:id="@+id/detail_activity_toolbar_main_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/detail_activity_action_bar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:theme="@style/MyActionBar" />
+    </android.support.design.widget.AppBarLayout>
+
+    <ImageView
+        android:id="@+id/detail_activity_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detail_activity_toolbar_main_layout"
+        android:scaleType="fitCenter"
+        android:src="@drawable/icon_example" />
+
+    <com.jacob.getsocial.reddit.view.custom.BaseWebView
+        android:id="@+id/detail_activity_web_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/detail_activity_toolbar_main_layout"
+        android:visibility="gone" />
+</RelativeLayout>
