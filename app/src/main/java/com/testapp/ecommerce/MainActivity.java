@@ -12,8 +12,8 @@ import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
-import com.jacob.getsocial.GetSocialSdk;
-import com.jacob.getsocial.GetSocialSdkDemoActivity;
+import com.jacob.getsocial.SocialDemoActivity;
+import com.jacob.getsocial.base.Social;
 import com.testapp.ecommerce.fragments.ActionBarFragment;
 import com.testapp.ecommerce.fragments.ProductsListFragment;
 import com.testapp.ecommerce.fragments.ProductsTypesListFragment;
@@ -122,8 +122,8 @@ public class MainActivity extends AppCompatActivity implements SearchFragment.On
 
     @Override
     public void onGetSocialClicked() {
-        Intent intent = new Intent(this, GetSocialSdkDemoActivity.class);
-        intent.putExtra(GetSocialSdkDemoActivity.SOCIAL_TYPE, GetSocialSdk.Type.REDDIT);
+        Intent intent = new Intent(this, SocialDemoActivity.class);
+        intent.putExtra(SocialDemoActivity.SOCIAL_TYPE, Social.Type.REDDIT);
         startActivity(intent);
     }
 }

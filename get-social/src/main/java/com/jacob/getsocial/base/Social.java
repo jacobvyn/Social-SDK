@@ -1,9 +1,13 @@
 package com.jacob.getsocial.base;
 
-public interface GetSocial {
+public interface Social {
     void onResume();
 
     void onPause();
 
     void searchFor(String query);
+
+    enum Type {
+        REDDIT
+    }
 }

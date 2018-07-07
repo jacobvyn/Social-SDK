@@ -9,15 +9,15 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.FrameLayout;
 
-import com.jacob.getsocial.base.GetSocial;
+import com.jacob.getsocial.base.Social;
 
 /**
  * Created by vynnykiakiv on 7/2/18.
  */
-public class GetSocialSdkDemoActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
+public class SocialDemoActivity extends AppCompatActivity implements SearchView.OnQueryTextListener {
     public static final String SOCIAL_TYPE = "SOCIAL_TYPE";
-    private GetSocial mReddit;
-    private GetSocialSdk.Type mSocialType;
+    private Social mReddit;
+    private Social.Type mSocialType;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,7 +29,7 @@ public class GetSocialSdkDemoActivity extends AppCompatActivity implements Searc
 
         FrameLayout container = (FrameLayout) findViewById(R.id.root_container);
         setSocialType();
-        mReddit = GetSocialSdk.getInstance(this, container, mSocialType);
+        mReddit = SocialSdk.getInstance(this, container, mSocialType);
     }
 
     @Override
@@ -44,7 +44,7 @@ public class GetSocialSdkDemoActivity extends AppCompatActivity implements Searc
 
     private void setSocialType() {
         if (getIntent() != null) {
-            mSocialType = (GetSocialSdk.Type) getIntent().getSerializableExtra(SOCIAL_TYPE);
+            mSocialType = (Social.Type) getIntent().getSerializableExtra(SOCIAL_TYPE);
         }
     }
 

@@ -25,9 +25,10 @@ public class DetailActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.detail_activity_action_bar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        retrieveNews();
+        getSupportActionBar().setTitle(mNews.getTitle());
         mImageView = (ImageView) findViewById(R.id.detail_activity_image);
         mWebView = (BaseWebView) findViewById(R.id.detail_activity_web_view);
-        retrieveNews();
         loadData();
     }
 

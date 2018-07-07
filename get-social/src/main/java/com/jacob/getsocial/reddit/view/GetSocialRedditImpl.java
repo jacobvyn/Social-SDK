@@ -5,11 +5,11 @@ import android.view.View;
 import android.widget.FrameLayout;
 
 import com.jacob.getsocial.network.HttpUtils;
-import com.jacob.getsocial.base.GetSocial;
+import com.jacob.getsocial.base.Social;
 import com.jacob.getsocial.reddit.GetSocialRedditContract;
 import com.jacob.getsocial.reddit.data.RepoProvider;
 
-public class GetSocialRedditImpl implements GetSocial {
+public class GetSocialRedditImpl implements Social {
     private final GetSocialRedditContract.Presenter mRedditPresenter;
 
     public GetSocialRedditImpl(AppCompatActivity activity, FrameLayout container) {
