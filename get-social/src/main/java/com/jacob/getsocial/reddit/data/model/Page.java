@@ -3,15 +3,15 @@ package com.jacob.getsocial.reddit.data.model;
 import java.util.List;
 
 public class Page {
-    private String mNextPage = "";
+    private String mNextPageToken = "";
     private String mQuery = "";
 
-    public String getNextPage() {
-        return mNextPage;
+    public String getNextPageToken() {
+        return mNextPageToken;
     }
 
-    public void setNextPage(String mNextPage) {
-        this.mNextPage = mNextPage;
+    public void setNextPageToken(String mNextPage) {
+        this.mNextPageToken = mNextPage;
     }
 
     public List<News> getNewsList() {
@@ -33,6 +33,6 @@ public class Page {
     }
 
     public String getId() {
-        return mQuery + mNextPage;
+        return mQuery + mNextPageToken;
     }
 }

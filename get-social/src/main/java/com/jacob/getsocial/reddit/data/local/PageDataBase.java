@@ -10,7 +10,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class PageDataBase {
-    private static final Map<String, Page> PAGE_DATA_BASE = new LinkedHashMap<>();
 
     private static PageDataBase sInstance;
     private PageDao mPageDao;
@@ -30,7 +29,8 @@ public class PageDataBase {
         return mPageDao;
     }
 
-    private class PageDaoImpl implements PageDao {
+    private static class PageDaoImpl implements PageDao {
+        private final Map<String, Page> PAGE_DATA_BASE = new LinkedHashMap<>();
 
         @Override
         public boolean savePage(@NonNull Page page) {
@@ -40,8 +40,8 @@ public class PageDataBase {
         }
 
         @Override
-        public Page loadNextPage(@NonNull String query, @NonNull String nextPage) {
-            String id = query + nextPage;
+        public Page loadNextPage(@NonNull String query, @NonNull String nextPageToken) {
+            String id = query + nextPageToken;
             return PAGE_DATA_BASE.get(id);
         }
 

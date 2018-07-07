@@ -17,6 +17,15 @@ import java.util.List;
 public class ResponseParser extends BaseJSONParser {
     private static final String REASON_TEMPLATE = "Server code: %1d., message: %2s.";
     private static final String BROKEN_RESPONSE = "Server's response is broken.";
+    private static final String PARAM_DATA = "data";
+    private static final String PARAM_AFTER = "after";
+    private static final String PARAM_CHILDREN = "children";
+    private static final String PARAM_NEWS_AUTHOR = "author";
+    private static final String PARAM_NEWS_URL = "url";
+    private static final String PARAM_NEWS_THUMBNAIL = "thumbnail";
+    private static final String PARAM_NEWS_TITLE = "title";
+    private static final String PARAM_NEWS_NUM_COMMENTS = "num_comments";
+    private static final String PARAM_NEWS_UPS = "ups";
 
     public RedditResponse parse(HttpRawResponse httpResponse, String query) {
         RedditResponse redditResponse = new RedditResponse(query);
@@ -40,14 +49,14 @@ public class ResponseParser extends BaseJSONParser {
         JSONObject response = parseToJsonObject(body);
 
         try {
-            JSONObject dataObj = response.getJSONObject("data");
-            String nextPage = getString(dataObj, "after", false);
-            page.setNextPage(nextPage);
-            JSONArray children = dataObj.getJSONArray("children");
+            JSONObject dataObj = response.getJSONObject(PARAM_DATA);
+            String nextPage = getString(dataObj, PARAM_AFTER, false);
+            page.setNextPageToken(nextPage);
+            JSONArray children = dataObj.getJSONArray(PARAM_CHILDREN);
 
             List<News> newsList = new ArrayList<>();
             for (int i = 0; i < children.length(); i++) {
-                JSONObject child = children.getJSONObject(i).getJSONObject("data");
+                JSONObject child = children.getJSONObject(i).getJSONObject(PARAM_DATA);
                 News news = parseNews(child);
                 newsList.add(news);
             }
@@ -60,12 +69,12 @@ public class ResponseParser extends BaseJSONParser {
     }
 
     private News parseNews(JSONObject child) throws JSONException {
-        String author = getString(child, "author", false);
-        String url = getString(child, "url", false);
-        String thumbnail = getString(child, "thumbnail", false);
-        String title = getString(child, "title", false);
-        int comments = getInt(child, "num_comments", false);
-        int likes = getInt(child, "ups", false);
+        String author = getString(child, PARAM_NEWS_AUTHOR, false);
+        String url = getString(child, PARAM_NEWS_URL, false);
+        String thumbnail = getString(child, PARAM_NEWS_THUMBNAIL, false);
+        String title = getString(child, PARAM_NEWS_TITLE, false);
+        int comments = getInt(child, PARAM_NEWS_NUM_COMMENTS, false);
+        int likes = getInt(child, PARAM_NEWS_UPS, false);
         return new News(author, url, comments, likes, thumbnail, title);
     }
 

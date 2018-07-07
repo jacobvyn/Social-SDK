@@ -52,7 +52,7 @@ public class RedditPresenter implements GetSocialRedditContract.Presenter, PageD
         } else if (mState == LoadState.UPDATE) {
             mView.onUpdate(page.getNewsList());
         }
-        mNextPage = page.getNextPage();
+        mNextPage = page.getNextPageToken();
         mView.showProgressBar(false);
         mState = LoadState.NONE;
     }
