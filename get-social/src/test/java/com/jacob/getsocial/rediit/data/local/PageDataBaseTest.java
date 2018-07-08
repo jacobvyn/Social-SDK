@@ -24,20 +24,20 @@ public class PageDataBaseTest {
     @Mock
     private Context mContext;
 
-//    @Test
-//    public void db_loadPageByQuery() {
-//        PageDao cache = PageDataBase.getInstance(mContext).getPageDao();
-//        String query = "lamborghini";
-//        String netPageToken = "bwm";
-//        Page page = createPage(query, netPageToken);
-//        cache.savePage(page);
-//
-//        Page loadedPageNull = cache.loadPage(query + "diablo");
-//        assertTrue(loadedPageNull == null);
-//
-//        Page loadedPageNotNull = cache.loadPage(query);
-//        assertEquals(page, loadedPageNotNull);
-//    }
+    @Test
+    public void db_loadPageByQuery() {
+        PageDao cache = PageDataBase.getInstance(mContext).getPageDao();
+        String query = "lamborghini";
+        String netPageToken = "bwm";
+        Page page = createPage(query, netPageToken);
+        cache.savePage(page);
+
+        Page loadedPageNull = cache.loadPage(query + "diablo");
+        assertTrue(loadedPageNull == null);
+
+        Page loadedPageNotNull = cache.loadPage(page.getId());
+        assertEquals(page, loadedPageNotNull);
+    }
 
     @Test
     public void db_loadPage_by_query_and_nextPageToken() {
